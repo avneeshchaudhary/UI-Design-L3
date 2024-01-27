@@ -1,0 +1,48 @@
+.customer {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.customerTitle {
+  text-align: center;
+  color: #333;
+}
+
+.instructions {
+  font-size: 14px;
+  color: #555;
+}
+
+.checkbox-wrapper {
+  margin-top: 20px;
+}
+
+.checkbox-wrapper label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.checkbox-wrapper input {
+  margin-left: 10px;
+}
+
+.btn {
+  display: block;
+  margin-top: 20px;
+  padding: 10px;
+  width: 100%;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.error {
+  color: #ff0000;
+  margin-top: 5px;
+}

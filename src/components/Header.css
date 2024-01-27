@@ -1,0 +1,38 @@
+.header {
+    background-color: #cb6969;
+    color: rgb(239, 250, 44);
+    padding: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo a {
+    color: rgb(240, 233, 23);
+    text-decoration: none;
+    font-size: 40px;
+    font-weight: bold;
+    padding: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+  
+  .nav ul {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav li {
+    margin-right: 40px;
+  }
+  
+  .nav a {
+    color: rgb(11, 12, 12);
+    text-decoration: wavy;
+    font-size: 26px;
+    font-weight: bold;
+  }
+  
+  .nav a:hover {
+    border-bottom: 2px solid white;
+  }
+  

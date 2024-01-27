@@ -1,0 +1,50 @@
+/* Card.css */
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 10px;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.prodtext {
+    padding: 5px;
+}
+
+.prodName {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.prodCategory {
+    font-size: 5px; /* Adjust the font size as needed */
+    color: #888; /* Set your desired font color */
+    font-family: Arial, Helvetica, sans-serif, Times, serif, 'Arial Narrow', Arial, sans-serif, sans-serif; /* Set your desired Apple-like font */
+}
+
+.prodPrice {
+    font-size: 14px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.btn {
+    display: block;
+    margin-top: auto;
+    padding: 8px;
+    background-color: #006aff;
+    color: #fdfcfb;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #1edaf7;
+}
