@@ -3,7 +3,14 @@ import React, { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
 
 // Initial state
-const initialState = { cart: [] };
+const initialState = {
+  cart: [],
+  preferences: {
+    lactose: false,
+    nuts: false,
+    organic: false,
+  },
+};
 
 // Create context
 export const GlobalContext = createContext(initialState);
@@ -33,16 +40,22 @@ export const GlobalProvider = (props) => {
     dispatch({ type: "CLEAR_CART" });
   };
 
+  const updatePreferences = (newPreferences) => {
+    dispatch({ type: "UPDATE_PREFERENCES", payload: newPreferences });
+  };
+
   // Add more actions as needed
 
   return (
     <GlobalContext.Provider
       value={{
         cart: state.cart,
+        preferences: state.preferences,
         addToCart,
         removeItem,
         clearCart,
-        calculateTotalPrice, // Include the calculateTotalPrice function in the context
+        updatePreferences,
+        calculateTotalPrice,
       }}
     >
       {props.children}

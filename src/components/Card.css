@@ -4,47 +4,47 @@
     border-radius: 8px;
     overflow: hidden;
     margin: 10px;
-    transition: transform 0.3s ease-in-out;
+    transition: box-shadow 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
-}
-
-.product-card:hover {
-    transform: scale(1.05);
-}
-
-.prodtext {
-    padding: 5px;
-}
-
-.prodName {
-    font-size: 16px;
-    margin-bottom: 5px;
-}
-
-.prodCategory {
-    font-size: 5px; /* Adjust the font size as needed */
-    color: #888; /* Set your desired font color */
-    font-family: Arial, Helvetica, sans-serif, Times, serif, 'Arial Narrow', Arial, sans-serif, sans-serif; /* Set your desired Apple-like font */
-}
-
-.prodPrice {
-    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    width: 300px; /* Adjust the width as needed */
+  }
+  
+  .product-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Slightly elevate on hover */
+  }
+  
+  .card-content {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .prodName {
+    font-size: 18px;
+    margin-bottom: 8px;
     font-weight: bold;
-    color: #007bff;
-}
-
-.btn {
-    display: block;
-    margin-top: auto;
-    padding: 8px;
-    background-color: #006aff;
-    color: #fdfcfb;
+  }
+  
+  .prodPrice {
+    font-size: 16px;
+    color: #111111;
+    margin-bottom: 12px;
+  }
+  
+  .btn {
+    padding: 12px;
+    background-color: #1c1c1d;
+    color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
-}
-
-.btn:hover {
-    background-color: #1edaf7;
-}
+    transition: background-color 0.3s ease-in-out;
+    text-align: center;
+  }
+  
+  .btn:hover {
+    background-color: #121213;
+  }
+  

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./Customer.css"; // You can create a separate CSS file for styling
+import "./Customer.css";
 
 const Customer = () => {
-  // State used to track user preferences
   const [preferences, setPreferences] = useState({
     lactose: JSON.parse(sessionStorage.getItem("lactoseFree")) || false,
     nuts: JSON.parse(sessionStorage.getItem("nutFree")) || false,
@@ -17,7 +16,6 @@ const Customer = () => {
       const errors = {};
       let isValid = true;
 
-      // Validate at least one preference is selected
       if (!preferences.lactose && !preferences.nuts && !preferences.organic) {
         errors.preferences = "Select at least one preference.";
         isValid = false;
@@ -42,7 +40,6 @@ const Customer = () => {
     evt.preventDefault();
 
     if (isFormValid) {
-      // Add user preferences to session storage
       sessionStorage.setItem("lactoseFree", JSON.stringify(preferences.lactose));
       sessionStorage.setItem("nutFree", JSON.stringify(preferences.nuts));
       sessionStorage.setItem("organic", JSON.stringify(preferences.organic));
@@ -61,31 +58,34 @@ const Customer = () => {
         </p>
         <form onSubmit={handleSubmit}>
           <div className="checkbox-wrapper">
-            <label>
-              Would you like to see our lactose-free products?
+            <label htmlFor="lactose">
+              Lactose-free products
               <input
                 type="checkbox"
                 checked={preferences.lactose}
                 onChange={handleChange}
                 name="lactose"
+                id="lactose"
               />
             </label>
-            <label>
-              Would you like to see our nut-free products?
+            <label htmlFor="nuts">
+              Nut-free products
               <input
                 type="checkbox"
                 checked={preferences.nuts}
                 onChange={handleChange}
                 name="nuts"
+                id="nuts"
               />
             </label>
-            <label>
-              Would you like to see our organic products?
+            <label htmlFor="organic">
+              Organic products
               <input
                 type="checkbox"
                 checked={preferences.organic}
                 onChange={handleChange}
                 name="organic"
+                id="organic"
               />
             </label>
           </div>

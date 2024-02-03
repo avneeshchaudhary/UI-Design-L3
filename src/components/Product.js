@@ -1,48 +1,52 @@
-import React, { useState, useEffect } from "react";
-import Card from "./card.js";
-import './Product.css';
+// Product.js
+import React, { useState, useEffect, useContext } from "react";
+import Card from "./card";
+import { GlobalContext } from "./GlobalState";
+import "./Product.css";
 
 const Product = () => {
-  const initialProducts = [
-    { name: "Whole Wheat Bread", category: "Bread", lactoseFree: true, nutFree: true, organic: true, price: 2.99 },
-    { name: "Milk", category: "Dairy", lactoseFree: false, nutFree: true, organic: false, price: 3.49 },
-    { name: "Cheddar Cheese", category: "Dairy", lactoseFree: false, nutFree: true, organic: false, price: 5.49 },
-    { name: "Bananas", category: "Fresh Produce", lactoseFree: true, nutFree: true, organic: true, price: 1.45 },
-    { name: "Chicken Breast", category: "Proteins", lactoseFree: true, nutFree: true, organic: false, price: 6.99 },
-    { name: "Brown Rice", category: "Grains", lactoseFree: true, nutFree: true, organic: true, price: 2.19 },
-    { name: "Avocado", category: "Fresh Produce", lactoseFree: true, nutFree: true, organic: true, price: 2.99 },
-    { name: "Quinoa", category: "Grains", lactoseFree: true, nutFree: true, organic: true, price: 4.49 },
-    { name: "Chicken Breast", category: "Proteins", lactoseFree: true, nutFree: true, organic: false, price: 6.99 },
-    { name: "Blueberries", category: "Fresh Produce", lactoseFree: true, nutFree: true, organic: true, price: 3.29 },
-    { name: "Spinach", category: "Fresh Produce", lactoseFree: true, nutFree: true, organic: true, price: 1.99 },
-    { name: "Dark Chocolate", category: "Snacks", lactoseFree: true, nutFree: false, organic: false, price: 4.99 },
-    { name: "Almond Milk", category: "Dairy", lactoseFree: true, nutFree: true, organic: true, price: 2.79 },
-    { name: "Sweet Potato", category: "Fresh Produce", lactoseFree: true, nutFree: true, organic: true, price: 1.49 },
-    { name: "Orange Juice", category: "Beverages", lactoseFree: true, nutFree: true, organic: false, price: 3.99 },
-    { name: "Greek Yogurt", category: "Dairy", lactoseFree: false, nutFree: true, organic: false, price: 4.79 },
-    { name: "Whole Wheat Pasta", category: "Grains", lactoseFree: true, nutFree: true, organic: false, price: 2.19 },
-    { name: "Cheddar Cheese", category: "Dairy", lactoseFree: false, nutFree: true, organic: false, price: 5.49 },
-    { name: "Salmon", category: "Seafood", lactoseFree: true, nutFree: true, organic: false, price: 8.99 },
-    { name: "Apples", category: "Fresh Produce", lactoseFree: true, nutFree: true, organic: true, price: 1.15 },
-    { name: "Banana", category: "Fresh Produce", lactoseFree: true, nutFree: true, organic: true, price: 1.45 },
-    { name: "Chips", category: "Snacks", lactoseFree: true, nutFree: true, organic: false, price: 3.99 },
-    { name: "Nutella", category: "Spreads", lactoseFree: true, nutFree: false, organic: false, price: 5.49 },
-    { name: "Broccoli", category: "Fresh Produce", lactoseFree: true, nutFree: true, organic: true, price: 2.49 },
-    { name: "Milk", category: "Dairy", lactoseFree: false, nutFree: true, organic: false, price: 3.49 },
-    { name: "Peanut Butter Ice Cream", category: "Frozen Treats", lactoseFree: false, nutFree: false, organic: false, price: 5.99 },
-    { name: "Bread", category: "Bakery", lactoseFree: true, nutFree: true, organic: true, price: 2.99 },
-    { name: "Cheese", category: "Dairy", lactoseFree: false, nutFree: true, organic: false, price: 3.99 },
-  ];
-
-  const [products, setProducts] = useState(initialProducts);
+  const productsPerPage = 12;
+  const { preferences } = useContext(GlobalContext);
+  const [products, setProducts] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
-    const filterProducts = () => {
-      const lactose = JSON.parse(sessionStorage.getItem("lactoseFree")) || false;
-      const nuts = JSON.parse(sessionStorage.getItem("nutFree")) || false;
-      const organic = JSON.parse(sessionStorage.getItem("organic")) || false;
+    const initialProducts = [
+      { name: "Whole Wheat Bread", price: 2.99, category: "Bread", lactoseFree: true, nutFree: true, organic: true },
+      { name: "Milk", price: 3.49, category: "Dairy", lactoseFree: false, nutFree: true, organic: false },
+      { name: "Cheddar Cheese", price: 5.49, category: "Dairy", lactoseFree: false, nutFree: true, organic: false },
+      { name: "Bananas", price: 1.45, category: "Fresh Produce", lactoseFree: true, nutFree: true, organic: true },
+      { name: "Chicken Breast", price: 6.99, category: "Proteins", lactoseFree: true, nutFree: true, organic: false },
+      { name: "Brown Rice", price: 2.19, category: "Grains", lactoseFree: true, nutFree: true, organic: true },
+      { name: "Avocado", price: 2.99, category: "Fresh Produce", lactoseFree: true, nutFree: true, organic: true },
+      { name: "Quinoa", price: 4.49, category: "Grains", lactoseFree: true, nutFree: true, organic: true },
+      { name: "Chicken Breast", price: 6.99, category: "Proteins", lactoseFree: true, nutFree: true, organic: false },
+      { name: "Blueberries", price: 3.29, category: "Fresh Produce", lactoseFree: true, nutFree: true, organic: true },
+      { name: "Spinach", price: 1.99, category: "Fresh Produce", lactoseFree: true, nutFree: true, organic: true },
+      { name: "Dark Chocolate", price: 4.99, category: "Snacks", lactoseFree: true, nutFree: false, organic: false },
+      { name: "Almond Milk", price: 2.79, category: "Dairy", lactoseFree: true, nutFree: true, organic: true },
+      { name: "Sweet Potato", price: 1.49, category: "Fresh Produce", lactoseFree: true, nutFree: true, organic: true },
+      { name: "Orange Juice", price: 3.99, category: "Beverages", lactoseFree: true, nutFree: true, organic: false },
+      { name: "Greek Yogurt", price: 4.79, category: "Dairy", lactoseFree: false, nutFree: true, organic: false },
+      { name: "Whole Wheat Pasta", price: 2.19, category: "Grains", lactoseFree: true, nutFree: true, organic: false },
+      { name: "Cheddar Cheese", price: 5.49, category: "Dairy", lactoseFree: false, nutFree: true, organic: false },
+      { name: "Salmon", price: 8.99, category: "Seafood", lactoseFree: true, nutFree: true, organic: false },
+      { name: "Apples", price: 1.15, category: "Fresh Produce", lactoseFree: true, nutFree: true, organic: true },
+      { name: "Banana", price: 1.45, category: "Fresh Produce", lactoseFree: true, nutFree: true, organic: true },
+      { name: "Chips", price: 3.99, category: "Snacks", lactoseFree: true, nutFree: true, organic: false },
+      { name: "Nutella", price: 5.49, category: "Spreads", lactoseFree: true, nutFree: false, organic: false },
+      { name: "Broccoli", price: 2.49, category: "Fresh Produce", lactoseFree: true, nutFree: true, organic: true },
+      { name: "Milk", price: 3.49, category: "Dairy", lactoseFree: false, nutFree: true, organic: false },
+      { name: "Peanut Butter Ice Cream", price: 5.99, category: "Frozen Treats", lactoseFree: false, nutFree: false, organic: false },
+      { name: "Bread", price: 2.99, category: "Bakery", lactoseFree: true, nutFree: true, organic: true },
+      { name: "Cheese", price: 3.99, category: "Dairy", lactoseFree: false, nutFree: true, organic: false },
+      // ... Add more products with their details
+    ];
 
-      const filteredProducts = initialProducts.filter(product => {
+    const filterAndPaginateProducts = () => {
+      const { lactose, nuts, organic } = preferences;
+
+      const filteredProducts = initialProducts.filter((product) => {
         return (
           (lactose && product.lactoseFree) ||
           (nuts && product.nutFree) ||
@@ -51,12 +55,24 @@ const Product = () => {
         );
       });
 
-      const sortedProducts = [...filteredProducts].sort((a, b) => a.price - b.price);
-      setProducts(sortedProducts);
+      const startIndex = currentSlide * productsPerPage;
+      const endIndex = startIndex + productsPerPage;
+      const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
+
+      setProducts(paginatedProducts);
     };
 
-    filterProducts();
-  }, []);
+    filterAndPaginateProducts();
+  }, [preferences, currentSlide]); // Include only the necessary dependencies
+
+  const handlePrevSlide = () => {
+    setCurrentSlide((prevSlide) => Math.max(prevSlide - 1, 0));
+  };
+
+  const handleNextSlide = () => {
+    const maxSlide = Math.ceil(products.length / productsPerPage) - 1;
+    setCurrentSlide((prevSlide) => Math.min(prevSlide + 1, maxSlide));
+  };
 
   return (
     <div className="prod">
@@ -68,6 +84,15 @@ const Product = () => {
               <Card product={item} />
             </ul>
           ))}
+        </div>
+        <div className="pagination">
+          <button onClick={handlePrevSlide} disabled={currentSlide === 0}>
+            {"<"}
+          </button>
+          <span>{`${currentSlide + 1}/${Math.ceil(products.length / productsPerPage)}`}</span>
+          <button onClick={handleNextSlide} disabled={currentSlide === Math.ceil(products.length / productsPerPage) - 1}>
+            {">"}
+          </button>
         </div>
       </div>
     </div>

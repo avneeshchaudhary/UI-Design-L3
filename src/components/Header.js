@@ -1,23 +1,35 @@
+// Header.js
 import React from "react";
-import { Link } from "react-router-dom";
-import "./Header.css"; // Update the import path for Header.css
+import { NavLink } from "react-router-dom";
+import "./Header.css";
 
 const Header = () => {
   return (
     <header className="header">
       <div className="logo">
-        <Link to="/UI-Design-L2/">Friendly Grocers</Link>
+        <NavLink to="/UI-Design-L3/">Campus Mart</NavLink>
       </div>
       <nav className="nav">
         <ul>
-          <li>
-            <Link to="/UI-Design-L2">Home</Link>
-          </li>
-          <li>
-            <Link to="/UI-Design-L2/product">Products</Link>
-          </li>
-          <li>
-            <Link to="/UI-Design-L2/cart">Cart</Link>
+          <li className="menu-dropdown">
+            <span>Menu</span>
+            <div className="dropdown-content">
+              <NavLink to="/UI-Design-L3" activeClassName="active" exact>
+                Home
+              </NavLink>
+              <NavLink to="/UI-Design-L3/product" activeClassName="active">
+                Products
+              </NavLink>
+              <NavLink to="/UI-Design-L3/cart" activeClassName="active">
+                <i className="fas fa-shopping-basket"></i> Cart
+              </NavLink>
+              <NavLink to="/UI-Design-L3/faq" activeClassName="active">
+                FAQ
+              </NavLink>
+              <NavLink to="/UI-Design-L3/contact" activeClassName="active">
+                Contact
+              </NavLink>
+            </div>
           </li>
         </ul>
       </nav>

@@ -1,38 +1,63 @@
+/* Cart.css */
 .cart {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .cart-item-text {
-    margin: 0;
-  }
-  
-  .itemName {
-    font-weight: bold;
-  }
-  
-  .totalPrice {
-    margin-top: 10px;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .no-items {
-    text-align: center;
-    font-size: 16px;
-    color: #888;
-    margin-top: 20px;
-  }
-  
+  max-width: 600px;
+  margin: 0 auto; /* Center the cart horizontally */
+  padding: 20px;
+  background-color: #fff; /* Change to your preferred background color */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 50px; /* Adjust the top margin for vertical centering */
+}
+
+.cart-title {
+  text-align: center;
+  color: #333;
+}
+
+.empty-cart-message {
+  text-align: center;
+  color: #555;
+}
+
+.cart-items {
+  /* Style for displaying cart items */
+}
+
+.cart-summary {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.total-price {
+  font-size: 18px;
+  color: #333;
+}
+
+form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  font-size: 14px;
+  color: #333;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Add any other styles as needed */

@@ -1,11 +1,22 @@
+/* Footer.css */
+
 .footer {
   position: fixed;
   bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: hsla(3, 68%, 51%, 0.484);
-  color: rgb(10, 10, 10);
+  right: 0;
+  background-color: #000; /* Black background */
+  color: #fff !important; /* White text */
   text-align: center;
-  padding: 0.001px;
-  font-size: small;
+  padding: 3px; /* Adjust the padding to reduce the height */
+  font-size: 12px;
+  font-weight: bold; /* Bold text */
+  text-transform: uppercase; /* Full caps */
+  height: 30px; /* Adjust the height as needed */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+
+/* Add additional styles as needed */
