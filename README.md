@@ -16,8 +16,8 @@ This is a simple React-based grocery store website that allows users to browse p
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/avneeshchaudhary/UI-Design-L2.git
-   cd UI-Design-L2
+   git clone https://github.com/avneeshchaudhary/UI-Design-L3.git
+   cd UI-Design-L3
    ```
 
 2. **Install dependencies:**
@@ -57,3 +57,4 @@ This project is licensed under the [MIT License](LICENSE).
 ---
 
 *Website designed by Avneesh Chaudhary*
+# UI-Design-L3
